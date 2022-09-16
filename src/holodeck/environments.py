@@ -612,6 +612,10 @@ class HolodeckEnvironment:
         environment = dict(os.environ.copy())
         if not show_viewport and 'DISPLAY' in environment:
             del environment['DISPLAY']
+        print([binary_path, task_key, '-HolodeckOn', '-opengl' + str(gl_version),
+                              '-LOG=HolodeckLog.txt', '-ForceRes', '-ResX=' + str(self._window_size[1]),
+                              '-ResY=' + str(self._window_size[0]), '--HolodeckUUID=' + self._uuid,
+                              '-TicksPerSec=' + str(self._ticks_per_sec)])
         self._world_process = \
             subprocess.Popen([binary_path, task_key, '-HolodeckOn', '-opengl' + str(gl_version),
                               '-LOG=HolodeckLog.txt', '-ForceRes', '-ResX=' + str(self._window_size[1]),
